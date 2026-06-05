@@ -408,8 +408,8 @@ RISK_COLORS = {
 @st.cache_resource(show_spinner=False)
 def load_model_and_labels():
     """Load TFLite model and class labels. Cached so it only loads once."""
-    model_path  = "skin_cancer_model.tflite"
-    labels_path = "class_labels.json"
+    model_path  = os.path.join(os.path.dirname(__file__), "skin_cancer_model.tflite")
+    labels_path = os.path.join(os.path.dirname(__file__), "class_labels.json")
 
     # Fallback: try current directory
     if not os.path.exists(model_path):
