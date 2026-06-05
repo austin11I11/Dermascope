@@ -13,7 +13,6 @@
 
 import streamlit as st
 import numpy as np
-import tensorflow as tf
 import cv2
 import json
 import os
@@ -423,7 +422,8 @@ def load_model_and_labels():
     if not os.path.exists(model_path):
         return None, None
 
-    interpreter = tf.lite.Interpreter(model_path=model_path)
+    from ai_edge_litert.interpreter import Interpreter
+    interpreter = Interpreter(model_path=model_path)
     interpreter.allocate_tensors()
 
     with open(labels_path) as f:
