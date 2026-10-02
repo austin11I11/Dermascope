@@ -474,11 +474,12 @@ def build_probability_bars(probs: np.ndarray, labels: dict) -> str:
     return html
 
 
-def make_gradcam_overlay(img_array: np.ndarray, alpha: float = 0.45) -> Image.Image:
+def make_texture_overlay(img_array: np.ndarray, alpha: float = 0.45) -> Image.Image:
     """
-    Approximate Grad-CAM using activation patterns from the input.
-    For TFLite models (no gradient access), we use a saliency proxy:
-    highlight high-activation regions by computing local variance.
+    Compute a local pixel-variance texture map from the input image.
+    This is derived purely from image pixels (high-pass variance against
+    a Gaussian-blurred version) and does not use the model in any way,
+    so it does not represent model attention or activations.
     """
     # img_array shape: (1, 224, 224, 3)
     img = img_array[0]  # (224, 224, 3)
@@ -685,12 +686,12 @@ with col_result:
 
 
 # ================================================================
-# SECTION 3 — Grad-CAM Heatmap
+# SECTION 3 — Texture Map
 # ================================================================
 
 if uploaded:
     st.markdown("<br>", unsafe_allow_html=True)
-    st.markdown('<div class="section-label">03 — Activation Heatmap</div>',
+    st.markdown('<div class="section-label">03 — Texture Map</div>',
                 unsafe_allow_html=True)
 
     cam_col1, cam_col2, cam_col3 = st.columns(3)
@@ -699,8 +700,8 @@ if uploaded:
         st.image(img_pil, caption="Original", use_container_width=True)
 
     with cam_col2:
-        overlay = make_gradcam_overlay(input_data, alpha=0.55)
-        st.image(overlay, caption="Activation Overlay", use_container_width=True)
+        overlay = make_texture_overlay(input_data, alpha=0.55)
+        st.image(overlay, caption="Local Texture Variance", use_container_width=True)
 
     with cam_col3:
         # High-pass saliency (edges + lesion boundaries)
@@ -714,10 +715,10 @@ if uploaded:
 
     st.markdown("""
     <p style='font-size:0.78rem; color:#4a4540; margin-top:0.75rem; line-height:1.7;'>
-    <strong style='color:#6b6560;'>Activation Overlay</strong> — Brighter regions
-    indicate areas the model weighted most heavily in its classification.
-    Used in research to validate that the model focuses on the lesion rather
-    than background artifacts.
+    <strong style='color:#6b6560;'>Local Texture Variance</strong> — Brighter regions
+    show high local pixel variance in the image, computed directly from
+    pixel values rather than the model. This does not represent model
+    attention or activations.
     </p>
     """, unsafe_allow_html=True)
 
