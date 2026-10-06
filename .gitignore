@@ -1,1 +1,4 @@
 dermascope/best_model.keras
+venv/
+__pycache__/
+.DS_Store
