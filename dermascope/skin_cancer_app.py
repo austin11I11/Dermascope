@@ -433,10 +433,10 @@ def load_model_and_labels():
 
 
 def preprocess_image(img: Image.Image) -> np.ndarray:
-    """PIL Image → normalized numpy array ready for TFLite."""
+    """PIL Image → float32 array in [0, 255] ready for TFLite (model rescales internally)."""
     img = img.convert("RGB")
     img = img.resize((IMG_SIZE, IMG_SIZE), Image.LANCZOS)
-    arr = np.array(img, dtype=np.float32) / 255.0
+    arr = np.array(img, dtype=np.float32)
     return np.expand_dims(arr, axis=0)  # (1, 224, 224, 3)
 
 
@@ -528,6 +528,23 @@ with st.sidebar:
     Trained on **HAM10000** — 10,015 dermatoscopic images across 7 diagnostic classes.
 
     Architecture: **EfficientNetB0** fine-tuned with transfer learning.
+    """)
+
+    st.markdown("**Test-set performance**")
+    st.markdown("""
+    Held-out HAM10000 test set (1,484 images):
+
+    - Macro AUC: **0.936**
+    - Accuracy: **78.0%**
+    - Macro F1: **0.66**
+    - Melanoma recall: **59%**
+    """)
+
+    st.markdown("**Known limitations**")
+    st.markdown("""
+    - About 20% of melanomas in testing were misclassified as benign moles.
+    - HAM10000 contains mostly lighter skin tones, so performance on
+      darker skin is unverified.
     """)
     st.markdown("---")
 
@@ -700,7 +717,7 @@ if uploaded:
         st.image(img_pil, caption="Original", use_container_width=True)
 
     with cam_col2:
-        overlay = make_texture_overlay(input_data, alpha=0.55)
+        overlay = make_texture_overlay(input_data / 255.0, alpha=0.55)
         st.image(overlay, caption="Local Texture Variance", use_container_width=True)
 
     with cam_col3:
@@ -758,11 +775,12 @@ if uploaded:
             have documented significantly lower diagnostic accuracy for
             Fitzpatrick skin types V–VI.
 
-            **This project's research angle:** Quantifying this accuracy gap
-            and exploring augmentation strategies to improve equity.
+            This model has not been evaluated by skin tone, so its
+            performance on darker skin is unverified.
 
-            *This is your publishable contribution — not just building the
-            model, but documenting where it fails and why.*
+            **Planned next step for this project:** Quantifying this accuracy
+            gap and exploring augmentation strategies to improve equity. This
+            analysis has not been done yet.
             """)
 
     # ── Disclaimer ──
