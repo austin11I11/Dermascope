@@ -534,15 +534,15 @@ with st.sidebar:
     st.markdown("""
     Held-out HAM10000 test set (1,484 images):
 
-    - Macro AUC: **0.936**
-    - Accuracy: **78.0%**
-    - Macro F1: **0.66**
-    - Melanoma recall: **59%**
+    - Macro AUC: **0.914**
+    - Accuracy: **74.5%**
+    - Melanoma recall: **35%**
     """)
 
     st.markdown("**Known limitations**")
     st.markdown("""
-    - About 20% of melanomas in testing were misclassified as benign moles.
+    - As currently deployed, about 65% of test melanomas were missed.
+      A preprocessing fix is in progress.
     - HAM10000 contains mostly lighter skin tones, so performance on
       darker skin is unverified.
     """)
