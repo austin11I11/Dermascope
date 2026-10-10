@@ -7,7 +7,7 @@
 #    streamlit run skin_cancer_app.py
 #
 #  FILES NEEDED IN SAME FOLDER:
-#    skin_cancer_model.tflite   (from Cell 20 of the model notebook)
+#    skin_cancer_model_f32.tflite   (unquantized float32 export, from training/verify_model)
 #    class_labels.json          (from Cell 20 of the model notebook)
 # ================================================================
 
@@ -408,7 +408,7 @@ RISK_COLORS = {
 @st.cache_resource(show_spinner=False)
 def load_model_and_labels():
     """Load TFLite model and class labels. Cached so it only loads once."""
-    model_path  = os.path.join(os.path.dirname(__file__), "skin_cancer_model.tflite")
+    model_path  = os.path.join(os.path.dirname(__file__), "skin_cancer_model_f32.tflite")
     labels_path = os.path.join(os.path.dirname(__file__), "class_labels.json")
 
     # Fallback: try current directory
@@ -433,10 +433,10 @@ def load_model_and_labels():
 
 
 def preprocess_image(img: Image.Image) -> np.ndarray:
-    """PIL Image → float32 array in [0, 255] ready for TFLite (model rescales internally)."""
-    img = img.convert("RGB")
-    img = img.resize((IMG_SIZE, IMG_SIZE), Image.LANCZOS)
-    arr = np.array(img, dtype=np.float32)
+    """PIL Image → float32 array in [0, 255], resized the way the training pipeline does."""
+    arr = np.array(img.convert("RGB"), dtype=np.uint8)
+    arr = cv2.resize(arr, (IMG_SIZE, IMG_SIZE), interpolation=cv2.INTER_LINEAR)
+    arr = arr.astype(np.float32)
     return np.expand_dims(arr, axis=0)  # (1, 224, 224, 3)
 
 
@@ -534,15 +534,14 @@ with st.sidebar:
     st.markdown("""
     Held-out HAM10000 test set (1,484 images):
 
-    - Macro AUC: **0.914**
-    - Accuracy: **74.5%**
-    - Melanoma recall: **35%**
+    - Macro AUC: **0.936**
+    - Accuracy: **78.0%**
+    - Melanoma recall: **59%**
     """)
 
     st.markdown("**Known limitations**")
     st.markdown("""
-    - As currently deployed, about 65% of test melanomas were missed.
-      A preprocessing fix is in progress.
+    - About 41% of test melanomas were missed.
     - HAM10000 contains mostly lighter skin tones, so performance on
       darker skin is unverified.
     """)
@@ -589,7 +588,7 @@ if interpreter is None:
     st.error("""
     **Model file not found.**
 
-    Make sure `skin_cancer_model.tflite` and `class_labels.json`
+    Make sure `skin_cancer_model_f32.tflite` and `class_labels.json`
     are in the same folder as this app.
 
     Run **Cell 20** of the model notebook first to generate these files.

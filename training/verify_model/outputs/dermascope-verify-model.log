@@ -1,0 +1,574 @@
+[{"stream_name":"stderr","time":7.740606161,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.740653715,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.740659743,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.740664085,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.351196527,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.351247022,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.351252392,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.351255962,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":12.335962374,"data":"\u001b[?25l   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.0/9.4 MB\u001b[0m \u001b[31m?\u001b[0m eta \u001b[36m-:--:--\u001b[0m\r\u001b[2K   \u001b[91m━━\u001b[0m\u001b[90m╺\u001b[0m\u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.5/9.4 MB\u001b[0m \u001b[31m15.2 MB/s\u001b[0m eta \u001b[36m0:00:01\u001b[0m\r\u001b[2K   \u001b[91m━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[90m╺\u001b[0m\u001b[90m━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m4.5/9.4 MB\u001b[0m \u001b[31m70.4 MB/s\u001b[0m eta \u001b[36m0:00:01\u001b[0m\r\u001b[2K   \u001b[91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[91m╸\u001b[0m \u001b[32m9.4/9.4 MB\u001b[0m \u001b[31m100.2 MB/s\u001b[0m eta \u001b[36m0:00:01\u001b[0m\r\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m9.4/9.4 MB\u001b[0m \u001b[31m68.5 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n"}
+,{"stream_name":"stdout","time":42.640847821,"data":"\u001b[?25hscikit-learn: 1.7.2\n"}
+,{"stream_name":"stdout","time":42.640883594,"data":"TensorFlow:   2.20.0\n"}
+,{"stream_name":"stdout","time":42.64089081,"data":"Keras:        3.13.2\n"}
+,{"stream_name":"stdout","time":42.640898962,"data":"pandas:       2.3.3 | numpy: 2.1.3\n"}
+,{"stream_name":"stdout","time":42.640901914,"data":"GPU:          /physical_device:GPU:0\n"}
+,{"stream_name":"stdout","time":68.66516956,"data":"/kaggle/input/datasets/kmader/skin-cancer-mnist-ham10000/HAM10000_metadata.csv\n"}
+,{"stream_name":"stdout","time":68.665220998,"data":"/kaggle/input/notebooks/austinpassionproject/cong-app-challenge/best_model.keras\n"}
+,{"stream_name":"stdout","time":68.665228304,"data":"/kaggle/input/notebooks/austinpassionproject/cong-app-challenge/skin_cancer_model.tflite\n"}
+,{"stream_name":"stdout","time":69.506635419,"data":"best_model.keras: identical to the file in the repo\n"}
+,{"stream_name":"stdout","time":69.506673311,"data":"skin_cancer_model.tflite: identical to the file in the repo\n"}
+,{"stream_name":"stdout","time":69.839515687,"data":"Images found: 10015 / 10015\n"}
+,{"stream_name":"stdout","time":80.660517376,"data":"Train 7003 / Val 1528 / Test 1484\n"}
+,{"stream_name":"stdout","time":80.66055076,"data":"Test per-class counts: [162, 999, 53, 41, 169, 30, 30]\n"}
+,{"stream_name":"stdout","time":80.660558702,"data":"Logged by training:    [162, 999, 53, 41, 169, 30, 30]\n"}
+,{"stream_name":"stdout","time":80.660575897,"data":"✓ Test split matches the training run's per-class counts\n"}
+,{"stream_name":"stdout","time":80.660581672,"data":"Saved /kaggle/working/test_split.csv\n"}
+,{"stream_name":"stderr","time":81.182429521,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":81.182458479,"data":"I0000 00:00:1791494243.442926      23 gpu_device.cc:2020] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 13756 MB memory:  -\u003e device: 0, name: Tesla T4, pci bus id: 0000:00:04.0, compute capability: 7.5\n"}
+,{"stream_name":"stderr","time":81.217231962,"data":"I0000 00:00:1791494243.446969      23 gpu_device.cc:2020] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 13756 MB memory:  -\u003e device: 1, name: Tesla T4, pci bus id: 0000:00:05.0, compute capability: 7.5\n"}
+,{"stream_name":"stderr","time":81.38535191,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":81.38538589,"data":"I0000 00:00:1791494243.442926      23 gpu_device.cc:2020] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 13756 MB memory:  -\u003e device: 0, name: Tesla T4, pci bus id: 0000:00:04.0, compute capability: 7.5\n"}
+,{"stream_name":"stderr","time":81.38539759,"data":"I0000 00:00:1791494243.446969      23 gpu_device.cc:2020] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 13756 MB memory:  -\u003e device: 1, name: Tesla T4, pci bus id: 0000:00:05.0, compute capability: 7.5\n"}
+,{"stream_name":"stderr","time":81.385401008,"data":"\n"}
+,{"stream_name":"stderr","time":81.385403486,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":81.38540614,"data":"I0000 00:00:1791494243.442926      23 gpu_device.cc:2020] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 13756 MB memory:  -\u003e device: 0, name: Tesla T4, pci bus id: 0000:00:04.0, compute capability: 7.5\n"}
+,{"stream_name":"stderr","time":81.385409188,"data":"I0000 00:00:1791494243.446969      23 gpu_device.cc:2020] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 13756 MB memory:  -\u003e device: 1, name: Tesla T4, pci bus id: 0000:00:05.0, compute capability: 7.5\n"}
+,{"stream_name":"stderr","time":95.709705477,"data":"2026-10-08 21:17:37.976443: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":95.852201415,"data":"2026-10-08 21:17:38.119958: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":95.912512723,"data":"2026-10-08 21:17:37.976443: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":95.912532863,"data":"2026-10-08 21:17:38.119958: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":95.91253804,"data":"\n"}
+,{"stream_name":"stderr","time":95.912541279,"data":"2026-10-08 21:17:37.976443: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":95.912558345,"data":"2026-10-08 21:17:38.119958: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":96.201772245,"data":"2026-10-08 21:17:38.469478: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":96.343885962,"data":"2026-10-08 21:17:38.611666: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":96.404604426,"data":"2026-10-08 21:17:38.469478: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":96.404635931,"data":"2026-10-08 21:17:38.611666: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":96.404641949,"data":"\n"}
+,{"stream_name":"stderr","time":96.404645452,"data":"2026-10-08 21:17:38.469478: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":96.404650507,"data":"2026-10-08 21:17:38.611666: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":96.485464672,"data":"2026-10-08 21:17:38.753260: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":96.687944923,"data":"2026-10-08 21:17:38.753260: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":96.687971495,"data":"\n"}
+,{"stream_name":"stderr","time":96.6879762,"data":"2026-10-08 21:17:38.753260: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":97.273689806,"data":"2026-10-08 21:17:39.541343: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":97.416412787,"data":"2026-10-08 21:17:39.684188: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":97.476746674,"data":"2026-10-08 21:17:39.541343: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":97.476785577,"data":"2026-10-08 21:17:39.684188: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":97.476790547,"data":"\n"}
+,{"stream_name":"stderr","time":97.476792849,"data":"2026-10-08 21:17:39.541343: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":97.476795532,"data":"2026-10-08 21:17:39.684188: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":97.557826938,"data":"2026-10-08 21:17:39.825550: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":97.76050004,"data":"2026-10-08 21:17:39.825550: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":97.76052945,"data":"\n"}
+,{"stream_name":"stderr","time":97.760534935,"data":"2026-10-08 21:17:39.825550: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":100.36357966,"data":"I0000 00:00:1791494262.631303      89 device_compiler.h:196] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.\n"}
+,{"stream_name":"stderr","time":100.565964156,"data":"I0000 00:00:1791494262.631303      89 device_compiler.h:196] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.\n"}
+,{"stream_name":"stderr","time":100.566004094,"data":"\n"}
+,{"stream_name":"stderr","time":100.566008955,"data":"I0000 00:00:1791494262.631303      89 device_compiler.h:196] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.\n"}
+,{"stream_name":"stderr","time":115.304964901,"data":"2026-10-08 21:17:57.572689: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":115.442908847,"data":"2026-10-08 21:17:57.710743: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":115.511022569,"data":"2026-10-08 21:17:57.572689: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":115.511045868,"data":"2026-10-08 21:17:57.710743: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":115.511075366,"data":"\n"}
+,{"stream_name":"stderr","time":115.511080145,"data":"2026-10-08 21:17:57.572689: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":115.511084391,"data":"2026-10-08 21:17:57.710743: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":115.764953359,"data":"2026-10-08 21:17:58.032725: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":115.907368633,"data":"2026-10-08 21:17:58.175196: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":115.96709546,"data":"2026-10-08 21:17:58.032725: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":115.967117301,"data":"2026-10-08 21:17:58.175196: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":115.967122556,"data":"\n"}
+,{"stream_name":"stderr","time":115.967125997,"data":"2026-10-08 21:17:58.032725: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":115.967130254,"data":"2026-10-08 21:17:58.175196: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":116.687322982,"data":"2026-10-08 21:17:58.955076: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":116.82908982,"data":"2026-10-08 21:17:59.096715: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":116.889590929,"data":"2026-10-08 21:17:58.955076: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":116.889609729,"data":"2026-10-08 21:17:59.096715: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":116.889614851,"data":"\n"}
+,{"stream_name":"stderr","time":116.889617974,"data":"2026-10-08 21:17:58.955076: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":116.889634247,"data":"2026-10-08 21:17:59.096715: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stdout","time":120.065886456,"data":"\r\u001b[1m 1/47\u001b[0m \u001b[37m━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[1m11:55\u001b[0m 16s/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m 3/47\u001b[0m \u001b[32m━\u001b[0m\u001b[37m━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[1m1s\u001b[0m 42ms/step  \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m 5/47\u001b[0m \u001b[32m━━\u001b[0m\u001b[37m━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[1m2s\u001b[0m 59ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m 6/47\u001b[0m \u001b[32m━━\u001b[0m\u001b[37m━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[1m3s\u001b[0m 92ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m 7/47\u001b[0m \u001b[32m━━\u001b[0m\u001b[37m━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[1m4s\u001b[0m 101ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m 8/47\u001b[0m \u001b[32m━━━\u001b[0m\u001b[37m━━━━━━━━━━━━━━━━━\u001b[0m \u001b[1m4s\u001b[0m 115ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m 9/47\u001b[0m \u001b[32m━━━\u001b[0m\u001b[37m━━━━━━━━━━━━━━━━━\u001b[0m \u001b[1m4s\u001b[0m 130ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m10/47\u001b[0m \u001b[32m━━━━\u001b[0m\u001b[37m━━━━━━━━━━━━━━━━\u001b[0m \u001b[1m5s\u001b[0m 141ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m11/47\u001b[0m \u001b[32m━━━━\u001b[0m\u001b[37m━━━━━━━━━━━━━━━━\u001b[0m \u001b[1m5s\u001b[0m 146ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m12/47\u001b[0m \u001b[32m━━━━━\u001b[0m\u001b[37m━━━━━━━━━━━━━━━\u001b[0m \u001b[1m5s\u001b[0m 154ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m13/47\u001b[0m \u001b[32m━━━━━\u001b[0m\u001b[37m━━━━━━━━━━━━━━━\u001b[0m \u001b[1m5s\u001b[0m 159ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m14/47\u001b[0m \u001b[32m━━━━━\u001b[0m\u001b[37m━━━━━━━━━━━━━━━\u001b[0m \u001b[1m5s\u001b[0m 163ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m15/47\u001b[0m \u001b[32m━━━━━━\u001b[0m\u001b[37m━━━━━━━━━━━━━━\u001b[0m \u001b[1m5s\u001b[0m 165ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m16/47\u001b[0m \u001b[32m━━━━━━\u001b[0m\u001b[37m━━━━━━━━━━━━━━\u001b[0m \u001b[1m5s\u001b[0m 165ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m17/47\u001b[0m \u001b[32m━━━━━━━\u001b[0m\u001b[37m━━━━━━━━━━━━━\u001b[0m \u001b[1m4s\u001b[0m 164ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m18/47\u001b[0m \u001b[32m━━━━━━━\u001b[0m\u001b[37m━━━━━━━━━━━━━\u001b[0m \u001b[1m4s\u001b[0m 163ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m19/47\u001b[0m \u001b[32m━━━━━━━━\u001b[0m\u001b[37m━━━━━━━━━━━━\u001b[0m \u001b[1m4s\u001b[0m 164ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m20/47\u001b[0m \u001b[32m━━━━━━━━\u001b[0m\u001b[37m━━━━━━━━━━━━\u001b[0m \u001b[1m4s\u001b[0m 164ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m21/47\u001b[0m \u001b[32m━━━━━━━━\u001b[0m\u001b[37m━━━━━━━━━━━━\u001b[0m \u001b[1m4s\u001b[0m 164ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m22/47\u001b[0m \u001b[32m━━━━━━━━━\u001b[0m\u001b[37m━━━━━━━━━━━\u001b[0m \u001b[1m4s\u001b[0m 163ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m23/47\u001b[0m \u001b[32m━━━━━━━━━\u001b[0m\u001b[37m━━━━━━━━━━━\u001b[0m \u001b[1m3s\u001b[0m 163ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m24/47\u001b[0m \u001b[32m━━━━━━━━━━\u001b[0m\u001b[37m━━━━━━━━━━\u001b[0m \u001b[1m3s\u001b[0m 163ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m25/47\u001b[0m \u001b[32m━━━━━━━━━━\u001b[0m\u001b[37m━━━━━━━━━━\u001b[0m \u001b[1m3s\u001b[0m 164ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m26/47\u001b[0m \u001b[32m━━━━━━━━━━━\u001b[0m\u001b[37m━━━━━━━━━\u001b[0m \u001b[1m3s\u001b[0m 163ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m27/47\u001b[0m \u001b[32m━━━━━━━━━━━\u001b[0m\u001b[37m━━━━━━━━━\u001b[0m \u001b[1m3s\u001b[0m 164ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m28/47\u001b[0m \u001b[32m━━━━━━━━━━━\u001b[0m\u001b[37m━━━━━━━━━\u001b[0m \u001b[1m3s\u001b[0m 165ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m29/47\u001b[0m \u001b[32m━━━━━━━━━━━━\u001b[0m\u001b[37m━━━━━━━━\u001b[0m \u001b[1m2s\u001b[0m 165ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m30/47\u001b[0m \u001b[32m━━━━━━━━━━━━\u001b[0m\u001b[37m━━━━━━━━\u001b[0m \u001b[1m2s\u001b[0m 164ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m31/47\u001b[0m \u001b[32m━━━━━━━━━━━━━\u001b[0m\u001b[37m━━━━━━━\u001b[0m \u001b[1m2s\u001b[0m 164ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m32/47\u001b[0m \u001b[32m━━━━━━━━━━━━━\u001b[0m\u001b[37m━━━━━━━\u001b[0m \u001b[1m2s\u001b[0m 164ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m33/47\u001b[0m \u001b[32m━━━━━━━━━━━━━━\u001b[0m\u001b[37m━━━━━━\u001b[0m \u001b[1m2s\u001b[0m 163ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m34/47\u001b[0m \u001b[32m━━━━━━━━━━━━━━\u001b[0m\u001b[37m━━━━━━\u001b[0m \u001b[1m2s\u001b[0m 162ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m35/47\u001b[0m \u001b[32m━━━━━━━━━━━━━━\u001b[0m\u001b[37m━━━━━━\u001b[0m \u001b[1m1s\u001b[0m 161ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m36/47\u001b[0m \u001b[32m━━━━━━━━━━━━━━━\u001b[0m\u001b[37m━━━━━\u001b[0m \u001b[1m1s\u001b[0m 161ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m37/47\u001b[0m \u001b[32m━━━━━━━━━━━━━━━\u001b[0m\u001b[37m━━━━━\u001b[0m \u001b[1m1s\u001b[0m 161ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m38/47\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m━━━━\u001b[0m \u001b[1m1s\u001b[0m 161ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m39/47\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m━━━━\u001b[0m \u001b[1m1s\u001b[0m 162ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m40/47\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m━━━\u001b[0m \u001b[1m1s\u001b[0m 163ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m41/47\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m━━━\u001b[0m \u001b[1m0s\u001b[0m 164ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m42/47\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m━━━\u001b[0m \u001b[1m0s\u001b[0m 164ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m43/47\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m━━\u001b[0m \u001b[1m0s\u001b[0m 165ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m44/47\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m━━\u001b[0m \u001b[1m0s\u001b[0m 166ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m45/47\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m━\u001b[0m \u001b[1m0s\u001b[0m 166ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m46/47\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m━\u001b[0m \u001b[1m0s\u001b[0m 167ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m47/47\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m\u001b[0m \u001b[1m0s\u001b[0m 416ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m47/47\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m\u001b[0m \u001b[1m35s\u001b[0m 416ms/step\n"}
+,{"stream_name":"stdout","time":120.138920061,"data":"Keras (training preprocessing): accuracy 0.7803 | macro AUC 0.9364\n"}
+,{"stream_name":"stdout","time":120.138948387,"data":"\n"}
+,{"stream_name":"stdout","time":120.138953479,"data":"Accuracy  0.7803 vs logged 0.7803 → ✓ reproduced\n"}
+,{"stream_name":"stdout","time":120.13895837,"data":"Macro AUC 0.9364 vs logged 0.9364 → ✓ reproduced\n"}
+,{"stream_name":"stdout","time":120.254096016,"data":"Interpreter: tf.lite (ai_edge_litert not installed here)\n"}
+,{"stream_name":"stdout","time":137.640755751,"data":"Old-app-preprocessed test set: (1484, 224, 224, 3)\n"}
+,{"stream_name":"stdout","time":141.434144878,"data":"\r\u001b[1m 1/47\u001b[0m \u001b[37m━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[1m4s\u001b[0m 103ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m 3/47\u001b[0m \u001b[32m━\u001b[0m\u001b[37m━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[1m2s\u001b[0m 48ms/step \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m 5/47\u001b[0m \u001b[32m━━\u001b[0m\u001b[37m━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[1m2s\u001b[0m 48ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m 7/47\u001b[0m \u001b[32m━━\u001b[0m\u001b[37m━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[1m1s\u001b[0m 44ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m 9/47\u001b[0m \u001b[32m━━━\u001b[0m\u001b[37m━━━━━━━━━━━━━━━━━\u001b[0m \u001b[1m1s\u001b[0m 42ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m11/47\u001b[0m \u001b[32m━━━━\u001b[0m\u001b[37m━━━━━━━━━━━━━━━━\u001b[0m \u001b[1m1s\u001b[0m 40ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m13/47\u001b[0m \u001b[32m━━━━━\u001b[0m\u001b[37m━━━━━━━━━━━━━━━\u001b[0m \u001b[1m1s\u001b[0m 39ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m15/47\u001b[0m \u001b[32m━━━━━━\u001b[0m\u001b[37m━━━━━━━━━━━━━━\u001b[0m \u001b[1m1s\u001b[0m 39ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m17/47\u001b[0m \u001b[32m━━━━━━━\u001b[0m\u001b[37m━━━━━━━━━━━━━\u001b[0m \u001b[1m1s\u001b[0m 38ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m19/47\u001b[0m \u001b[32m━━━━━━━━\u001b[0m\u001b[37m━━━━━━━━━━━━\u001b[0m \u001b[1m1s\u001b[0m 37ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m21/47\u001b[0m \u001b[32m━━━━━━━━\u001b[0m\u001b[37m━━━━━━━━━━━━\u001b[0m \u001b[1m0s\u001b[0m 37ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m23/47\u001b[0m \u001b[32m━━━━━━━━━\u001b[0m\u001b[37m━━━━━━━━━━━\u001b[0m \u001b[1m0s\u001b[0m 37ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m25/47\u001b[0m \u001b[32m━━━━━━━━━━\u001b[0m\u001b[37m━━━━━━━━━━\u001b[0m \u001b[1m0s\u001b[0m 37ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m27/47\u001b[0m \u001b[32m━━━━━━━━━━━\u001b[0m\u001b[37m━━━━━━━━━\u001b[0m \u001b[1m0s\u001b[0m 36ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m29/47\u001b[0m \u001b[32m━━━━━━━━━━━━\u001b[0m\u001b[37m━━━━━━━━\u001b[0m \u001b[1m0s\u001b[0m 37ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m31/47\u001b[0m \u001b[32m━━━━━━━━━━━━━\u001b[0m\u001b[37m━━━━━━━\u001b[0m \u001b[1m0s\u001b[0m 36ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m33/47\u001b[0m \u001b[32m━━━━━━━━━━━━━━\u001b[0m\u001b[37m━━━━━━\u001b[0m \u001b[1m0s\u001b[0m 36ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m35/47\u001b[0m \u001b[32m━━━━━━━━━━━━━━\u001b[0m\u001b[37m━━━━━━\u001b[0m \u001b[1m0s\u001b[0m 36ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m37/47\u001b[0m \u001b[32m━━━━━━━━━━━━━━━\u001b[0m\u001b[37m━━━━━\u001b[0m \u001b[1m0s\u001b[0m 36ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m39/47\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m━━━━\u001b[0m \u001b[1m0s\u001b[0m 36ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m41/47\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m━━━\u001b[0m \u001b[1m0s\u001b[0m 36ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m43/47\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m━━\u001b[0m \u001b[1m0s\u001b[0m 36ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m45/47\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m━\u001b[0m \u001b[1m0s\u001b[0m 35ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\r\u001b[1m47/47\u001b[0m \u001b[32m━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[37m\u001b[0m \u001b[1m2s\u001b[0m 35ms/step\n"}
+,{"stream_name":"stderr","time":141.600587456,"data":"INFO: Created TensorFlow Lite XNNPACK delegate for CPU.\n"}
+,{"stream_name":"stdout","time":141.60247213,"data":"Keras (old app preprocessing): accuracy 0.7621 | macro AUC 0.9196 | agreement 0.8578\n"}
+,{"stream_name":"stdout","time":141.63397405,"data":"  input dtype: float32 | file size: 4.9 MB\n"}
+,{"stream_name":"stderr","time":141.77597339,"data":"/usr/local/lib/python3.13/dist-packages/tensorflow/lite/python/interpreter.py:457: UserWarning:     Warning: tf.lite.Interpreter is deprecated and is scheduled for deletion in\n"}
+,{"stream_name":"stderr","time":141.776019291,"data":"    TF 2.20. Please use the LiteRT interpreter from the ai_edge_litert package.\n"}
+,{"stream_name":"stderr","time":141.776025136,"data":"    See the [migration guide](https://ai.google.dev/edge/litert/migration)\n"}
+,{"stream_name":"stderr","time":141.776028726,"data":"    for details.\n"}
+,{"stream_name":"stderr","time":141.776032021,"data":"    \n"}
+,{"stream_name":"stderr","time":141.776035245,"data":"  warnings.warn(_INTERPRETER_DELETION_WARNING)\n"}
+,{"stream_name":"stderr","time":141.776038523,"data":"INFO: Created TensorFlow Lite XNNPACK delegate for CPU.\n"}
+,{"stream_name":"stderr","time":141.776041775,"data":"\n"}
+,{"stream_name":"stderr","time":141.776045078,"data":"/usr/local/lib/python3.13/dist-packages/tensorflow/lite/python/interpreter.py:457: UserWarning:     Warning: tf.lite.Interpreter is deprecated and is scheduled for deletion in\n"}
+,{"stream_name":"stderr","time":141.776048585,"data":"    TF 2.20. Please use the LiteRT interpreter from the ai_edge_litert package.\n"}
+,{"stream_name":"stderr","time":141.776051872,"data":"    See the [migration guide](https://ai.google.dev/edge/litert/migration)\n"}
+,{"stream_name":"stderr","time":141.776056768,"data":"    for details.\n"}
+,{"stream_name":"stderr","time":141.776065409,"data":"    \n"}
+,{"stream_name":"stderr","time":141.776116966,"data":"  warnings.warn(_INTERPRETER_DELETION_WARNING)\n"}
+,{"stream_name":"stderr","time":141.776120477,"data":"INFO: Created TensorFlow Lite XNNPACK delegate for CPU.\n"}
+,{"stream_name":"stdout","time":188.893424704,"data":"Existing TFLite (old app preprocessing): accuracy 0.7446 | macro AUC 0.9137 | agreement 0.8497\n"}
+,{"stream_name":"stdout","time":198.700234821,"data":"INFO:tensorflow:Assets written to: /tmp/tmp16of10jw/assets\n"}
+,{"stream_name":"stderr","time":198.701089139,"data":"INFO:tensorflow:Assets written to: /tmp/tmp16of10jw/assets\n"}
+,{"stream_name":"stderr","time":198.701106677,"data":"\n"}
+,{"stream_name":"stderr","time":198.701111336,"data":"INFO:tensorflow:Assets written to: /tmp/tmp16of10jw/assets\n"}
+,{"stream_name":"stdout","time":198.766905818,"data":"Saved artifact at '/tmp/tmp16of10jw'. The following endpoints are available:\n"}
+,{"stream_name":"stdout","time":198.766949279,"data":"\n"}
+,{"stream_name":"stdout","time":198.766955284,"data":"* Endpoint 'serve'\n"}
+,{"stream_name":"stdout","time":198.766960267,"data":"  args_0 (POSITIONAL_ONLY): TensorSpec(shape=(None, 224, 224, 3), dtype=tf.float32, name='input_layer')\n"}
+,{"stream_name":"stdout","time":198.766964708,"data":"Output Type:\n"}
+,{"stream_name":"stdout","time":198.766969123,"data":"  TensorSpec(shape=(None, 7), dtype=tf.float32, name=None)\n"}
+,{"stream_name":"stdout","time":198.766973781,"data":"Captures:\n"}
+,{"stream_name":"stdout","time":198.766977933,"data":"  133468996223248: TensorSpec(shape=(1, 1, 1, 3), dtype=tf.float32, name=None)\n"}
+,{"stream_name":"stdout","time":198.7669822,"data":"  133468996223056: TensorSpec(shape=(1, 1, 1, 3), dtype=tf.float32, name=None)\n"}
+,{"stream_name":"stdout","time":198.766986359,"data":"  133471210854096: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.766990435,"data":"  133471210854672: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.766994538,"data":"  133471210854480: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.766998677,"data":"  133471210855056: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767013049,"data":"  133471210854864: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767018306,"data":"  133471210851984: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767021716,"data":"  133471210855440: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767026811,"data":"  133471210855248: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76703024,"data":"  133471210856208: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767034334,"data":"  133471210855632: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767038485,"data":"  133471210855824: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767042374,"data":"  133471210857360: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767046071,"data":"  133471210856592: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767049898,"data":"  133471210857744: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767053173,"data":"  133471210856976: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76705652,"data":"  133471210858128: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767059865,"data":"  133471210857936: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767063202,"data":"  133471210858896: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767066541,"data":"  133471210858320: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767070472,"data":"  133471210858512: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767090791,"data":"  133471210859088: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767094937,"data":"  133471210856784: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767099946,"data":"  133471210859856: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76710325,"data":"  133471210859280: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767106623,"data":"  133471210860240: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767109951,"data":"  133471210860624: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.7671133,"data":"  133471210860432: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76711669,"data":"  133471210861392: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767120415,"data":"  133471210860816: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767124135,"data":"  133471210859664: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767127405,"data":"  133471210862352: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767130764,"data":"  133471210861584: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767134078,"data":"  133471210862736: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767141463,"data":"  133471210859472: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767146607,"data":"  133471210861776: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767154104,"data":"  133471210861008: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767178138,"data":"  133471210863120: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767182013,"data":"  133471210862160: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767186108,"data":"  133471210862544: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76718974,"data":"  133471210863312: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767193696,"data":"  133471210861968: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767197423,"data":"  133471210864080: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767200705,"data":"  133471210863504: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76720406,"data":"  133471210862928: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767207339,"data":"  133471210861200: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767210706,"data":"  133470921162832: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767214023,"data":"  133471210863696: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767217401,"data":"  133471210863888: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767220631,"data":"  133470921163408: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767223942,"data":"  133470921164560: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76722727,"data":"  133470921163792: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767230617,"data":"  133470921164944: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767234443,"data":"  133470921163216: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767237832,"data":"  133470921163984: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767241175,"data":"  133470921163600: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767244426,"data":"  133470921165328: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767247687,"data":"  133470921164368: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767252783,"data":"  133470921165520: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767259833,"data":"  133470921165904: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76727321,"data":"  133470921165712: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76727711,"data":"  133470921166672: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767281126,"data":"  133470921166096: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767288443,"data":"  133470921166288: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767292406,"data":"  133470921167056: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767295751,"data":"  133470921166864: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767298996,"data":"  133470921167824: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767302233,"data":"  133470921167248: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767305493,"data":"  133470921164176: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767308783,"data":"  133470921168784: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767312056,"data":"  133470921168016: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767315373,"data":"  133470921169168: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767318645,"data":"  133470921166480: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767321895,"data":"  133470921168208: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767325161,"data":"  133470921167440: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76732847,"data":"  133470921169552: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767331695,"data":"  133470921168592: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767334906,"data":"  133470921168976: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767338196,"data":"  133470921169744: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76734144,"data":"  133470921168400: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767344747,"data":"  133470921170512: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767354347,"data":"  133470921169936: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767369156,"data":"  133470921169360: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767373572,"data":"  133470921170704: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767377418,"data":"  133470921170128: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767381567,"data":"  133470921171472: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767385573,"data":"  133470921170896: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767388933,"data":"  133470921170320: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767392227,"data":"  133470921172432: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767395543,"data":"  133470921171664: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76739887,"data":"  133470921172816: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767402191,"data":"  133470921167632: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767405478,"data":"  133470921171856: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767411762,"data":"  133470921171088: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767415188,"data":"  133470921173200: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767418513,"data":"  133470921172240: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767421815,"data":"  133470921172048: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767425158,"data":"  133470921173584: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767428421,"data":"  133470921173392: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767431733,"data":"  133470921174352: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767435025,"data":"  133470921173776: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767438384,"data":"  133470921172624: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767447215,"data":"  133470921174544: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767450476,"data":"  133470921173968: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76746475,"data":"  133470921175312: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76746896,"data":"  133470921174736: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767473095,"data":"  133470921174160: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767476993,"data":"  133470921176272: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767480896,"data":"  133470921175504: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767484195,"data":"  133470921176656: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767487528,"data":"  133470921173008: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767491292,"data":"  133470921175696: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767494608,"data":"  133470921174928: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767497878,"data":"  133470921177040: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767506988,"data":"  133470921176080: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767510313,"data":"  133470921176464: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767513611,"data":"  133470921177232: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76751694,"data":"  133470921175888: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767520292,"data":"  133470921178000: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767523451,"data":"  133470921177424: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767526783,"data":"  133470921176848: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767530049,"data":"  133470921178192: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767558716,"data":"  133470921177616: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767563377,"data":"  133470921178960: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767567713,"data":"  133470921178384: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76757165,"data":"  133470921177808: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767575636,"data":"  133470921178576: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76757901,"data":"  133470921178768: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767582425,"data":"  133470921175120: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767585691,"data":"  133469790814672: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767589052,"data":"  133469790815056: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767592325,"data":"  133469790814864: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767595718,"data":"  133469790815824: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767598963,"data":"  133469790815248: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767602328,"data":"  133469790815440: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767605603,"data":"  133469790816208: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767608951,"data":"  133469790816016: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767612195,"data":"  133469790816976: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767615493,"data":"  133469790816400: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767618815,"data":"  133469790814480: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767622496,"data":"  133469790817168: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767625781,"data":"  133469790816592: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767630835,"data":"  133469790817936: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767637343,"data":"  133469790817360: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767639971,"data":"  133469790816784: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767654128,"data":"  133469790818896: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76765811799999,"data":"  133469790818128: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76766215,"data":"  133469790819280: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767665594,"data":"  133469790815632: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.7676696,"data":"  133469790818320: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767673281,"data":"  133469790817552: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767679605,"data":"  133469790819664: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767682988,"data":"  133469790818704: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767686236,"data":"  133469790818512: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767692201,"data":"  133469790820048: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767695494,"data":"  133469790819856: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767698838,"data":"  133469790820816: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767702218,"data":"  133469790820240: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767705551,"data":"  133469790819088: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76770887200001,"data":"  133469790821008: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76771219,"data":"  133469790820432: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767715514,"data":"  133469790821776: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767718836,"data":"  133469790821200: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767722171,"data":"  133469790820624: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767725526,"data":"  133469790822736: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767734274,"data":"  133469790821968: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767737391,"data":"  133469790823120: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767750685,"data":"  133469790819472: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767754671,"data":"  133469790822160: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767758923,"data":"  133469790821392: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767763356,"data":"  133469790823504: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767767272,"data":"  133469790822544: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767770604,"data":"  133469790822928: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767773881,"data":"  133469790823696: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767777115,"data":"  133469790822352: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767780361,"data":"  133469790824464: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767783588,"data":"  133469790823888: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767786851,"data":"  133469790823312: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767790201,"data":"  133469790824656: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767793521,"data":"  133469790824080: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.7678,"data":"  133469790825424: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76780342,"data":"  133469790824848: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767806749,"data":"  133469790824272: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767810024,"data":"  133469790826384: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767813357,"data":"  133469790825616: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767816601,"data":"  133469790826768: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767819896,"data":"  133469790821584: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767828387,"data":"  133469790825808: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76783193,"data":"  133469790825040: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767845372,"data":"  133469790827152: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767849465,"data":"  133469790826192: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767853302,"data":"  133469790826000: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767857443,"data":"  133469790827536: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767861465,"data":"  133469790827344: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767864845,"data":"  133469790828304: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767868114,"data":"  133469790827728: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767871401,"data":"  133469790826576: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767874732,"data":"  133469790828496: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767877995,"data":"  133469790827920: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767882331,"data":"  133469790829264: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76788569,"data":"  133469790828688: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767889289,"data":"  133469790828112: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76789258,"data":"  133469790830224: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767895893,"data":"  133469790829456: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767899309,"data":"  133469790830416: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767902629,"data":"  133469790828880: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767905931,"data":"  133469790826960: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76790927,"data":"  133469790829072: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767912603,"data":"  133469790829840: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767917798,"data":"  133469790829648: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767928031,"data":"  133468998074832: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767942464,"data":"  133468998075216: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76794643,"data":"  133468998075024: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767950238,"data":"  133468998075984: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767954235,"data":"  133468998075408: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76795816,"data":"  133468998074640: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767961561,"data":"  133468998076176: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767964884,"data":"  133468998075600: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767968203,"data":"  133468998076944: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767971469,"data":"  133468998076368: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767974993,"data":"  133468998075792: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767978349,"data":"  133468998077904: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76798171,"data":"  133468998077136: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767985021,"data":"  133468998078288: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767988385,"data":"  133468998074448: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767991747,"data":"  133468998077328: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767995087,"data":"  133468998076560: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.767998398,"data":"  133468998078672: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768002137,"data":"  133468998077712: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768005548,"data":"  133468998078096: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768008818,"data":"  133468998078864: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768013863,"data":"  133468998077520: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768020595,"data":"  133468998079632: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76803398,"data":"  133468998079056: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768037826,"data":"  133468998078480: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768041851,"data":"  133468998079824: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76804551,"data":"  133468998079248: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768049277,"data":"  133468998080592: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768052616,"data":"  133468998080016: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768059158,"data":"  133468998079440: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768062543,"data":"  133468998081552: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768065806,"data":"  133468998080784: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768069636,"data":"  133468998081936: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768087581,"data":"  133468998076752: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76809125,"data":"  133468998080976: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768094611,"data":"  133468998080208: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768097908,"data":"  133468998082320: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768101256,"data":"  133468998081360: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768104509,"data":"  133468998081168: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768107765,"data":"  133468998082704: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768111063,"data":"  133468998082512: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76811451,"data":"  133468998083472: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76811788,"data":"  133468998082896: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768121294,"data":"  133468998081744: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768124602,"data":"  133468998083664: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768127891,"data":"  133468998083088: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768131241,"data":"  133468998084432: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76813459,"data":"  133468998083856: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768138478,"data":"  133468998083280: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768146736,"data":"  133468998085392: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768149365,"data":"  133468998084624: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768162223,"data":"  133468998085776: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768166173,"data":"  133468998082128: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768170095,"data":"  133468998084816: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768174172,"data":"  133468998084048: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768178147,"data":"  133468998086160: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768181843,"data":"  133468998085200: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768185226,"data":"  133468998085008: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768191903,"data":"  133468998086544: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768195325,"data":"  133468998086352: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768198649,"data":"  133468998087312: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768201943,"data":"  133468998086736: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768205285,"data":"  133468998085584: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768208647,"data":"  133468998087504: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768211967,"data":"  133468998086928: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768215298,"data":"  133468998088272: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768218664,"data":"  133468998087696: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768221998,"data":"  133468998087120: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768225351,"data":"  133468998089232: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768228634,"data":"  133468998088464: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768232007,"data":"  133468998089616: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768240632,"data":"  133468998085968: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76824342,"data":"  133468998088656: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768246091,"data":"  133468998087888: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768259247,"data":"  133468998090000: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768263608,"data":"  133468998089040: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768267441,"data":"  133468998088848: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76827199,"data":"  133468998089808: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76827585,"data":"  133468998089424: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768279188,"data":"  133468998090576: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76828246,"data":"  133468998090192: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.7682858,"data":"  133468998090384: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76828916,"data":"  133468997042832: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768292497,"data":"  133468997043024: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768296864,"data":"  133468997042256: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768300192,"data":"  133468997042640: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768303478,"data":"  133468997043408: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768306892,"data":"  133468997044560: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768313203,"data":"  133468997043792: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768316615,"data":"  133468997044944: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768319974,"data":"  133468997043216: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768323312,"data":"  133468997043984: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768326627,"data":"  133468997043600: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768331721,"data":"  133468997045328: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768338922,"data":"  133468997044368: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768341923,"data":"  133468997044752: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768355511,"data":"  133468997045520: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768359503,"data":"  133468997044176: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768363633,"data":"  133468997046288: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768367729,"data":"  133468997045712: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768371683,"data":"  133468997045904: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768374985,"data":"  133468997046480: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768378227,"data":"  133468997042448: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768381498,"data":"  133468997045136: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768384838,"data":"  133468997047056: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768388086,"data":"  133468997048016: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768391767,"data":"  133468997047632: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768395071,"data":"  133468997047440: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.768398341,"data":"  133468997046864: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76840163,"data":"  133468997047824: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76840497,"data":"  133468997048400: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stdout","time":198.76840829,"data":"  133468997049360: TensorSpec(shape=(), dtype=tf.resource, name=None)\n"}
+,{"stream_name":"stderr","time":204.15662065,"data":"W0000 00:00:1791494363.307207      23 tf_tfl_flatbuffer_helpers.cc:364] Ignored output_format.\n"}
+,{"stream_name":"stderr","time":204.156658605,"data":"W0000 00:00:1791494363.307233      23 tf_tfl_flatbuffer_helpers.cc:367] Ignored drop_control_dependency.\n"}
+,{"stream_name":"stderr","time":204.177192258,"data":"I0000 00:00:1791494363.542276      23 mlir_graph_optimization_pass.cc:437] MLIR V1 optimization pass is not enabled\n"}
+,{"stream_name":"stderr","time":204.382351528,"data":"W0000 00:00:1791494363.307207      23 tf_tfl_flatbuffer_helpers.cc:364] Ignored output_format.\n"}
+,{"stream_name":"stderr","time":204.382395428,"data":"W0000 00:00:1791494363.307233      23 tf_tfl_flatbuffer_helpers.cc:367] Ignored drop_control_dependency.\n"}
+,{"stream_name":"stderr","time":204.382401122,"data":"I0000 00:00:1791494363.542276      23 mlir_graph_optimization_pass.cc:437] MLIR V1 optimization pass is not enabled\n"}
+,{"stream_name":"stderr","time":204.382404983,"data":"\n"}
+,{"stream_name":"stderr","time":204.382408313,"data":"W0000 00:00:1791494363.307207      23 tf_tfl_flatbuffer_helpers.cc:364] Ignored output_format.\n"}
+,{"stream_name":"stderr","time":204.382411751,"data":"W0000 00:00:1791494363.307233      23 tf_tfl_flatbuffer_helpers.cc:367] Ignored drop_control_dependency.\n"}
+,{"stream_name":"stderr","time":204.38241515,"data":"I0000 00:00:1791494363.542276      23 mlir_graph_optimization_pass.cc:437] MLIR V1 optimization pass is not enabled\n"}
+,{"stream_name":"stdout","time":204.740759522,"data":"Saved /kaggle/working/skin_cancer_model_f32.tflite\n"}
+,{"stream_name":"stdout","time":204.740794395,"data":"skin_cancer_model_f32.tflite: identical to the file the app loads\n"}
+,{"stream_name":"stdout","time":204.740800289,"data":"  input dtype: float32 | file size: 17.3 MB\n"}
+,{"stream_name":"stderr","time":204.79661349,"data":"/usr/local/lib/python3.13/dist-packages/tensorflow/lite/python/interpreter.py:457: UserWarning:     Warning: tf.lite.Interpreter is deprecated and is scheduled for deletion in\n"}
+,{"stream_name":"stderr","time":204.796652091,"data":"    TF 2.20. Please use the LiteRT interpreter from the ai_edge_litert package.\n"}
+,{"stream_name":"stderr","time":204.796658816,"data":"    See the [migration guide](https://ai.google.dev/edge/litert/migration)\n"}
+,{"stream_name":"stderr","time":204.796664063,"data":"    for details.\n"}
+,{"stream_name":"stderr","time":204.796669103,"data":"    \n"}
+,{"stream_name":"stderr","time":204.796673764,"data":"  warnings.warn(_INTERPRETER_DELETION_WARNING)\n"}
+,{"stream_name":"stderr","time":204.796678273,"data":"\n"}
+,{"stream_name":"stderr","time":204.796682808,"data":"/usr/local/lib/python3.13/dist-packages/tensorflow/lite/python/interpreter.py:457: UserWarning:     Warning: tf.lite.Interpreter is deprecated and is scheduled for deletion in\n"}
+,{"stream_name":"stderr","time":204.796687878,"data":"    TF 2.20. Please use the LiteRT interpreter from the ai_edge_litert package.\n"}
+,{"stream_name":"stderr","time":204.79669258,"data":"    See the [migration guide](https://ai.google.dev/edge/litert/migration)\n"}
+,{"stream_name":"stderr","time":204.796697306,"data":"    for details.\n"}
+,{"stream_name":"stderr","time":204.796701994,"data":"    \n"}
+,{"stream_name":"stderr","time":204.796706511,"data":"  warnings.warn(_INTERPRETER_DELETION_WARNING)\n"}
+,{"stream_name":"stdout","time":229.961632807,"data":"Float32 TFLite (old app preprocessing): accuracy 0.7621 | macro AUC 0.9196 | agreement 0.8578\n"}
+,{"stream_name":"stdout","time":240.744546959,"data":"Updated-app-preprocessed test set: (1484, 224, 224, 3)\n"}
+,{"stream_name":"stdout","time":240.998499242,"data":"Mean |pixel difference| vs training pipeline, first 64 images: old app 1.53, updated app 0.95  (0–255 scale)\n"}
+,{"stream_name":"stdout","time":240.998540196,"data":"  input dtype: float32 | file size: 17.3 MB\n"}
+,{"stream_name":"stderr","time":241.000032962,"data":"/usr/local/lib/python3.13/dist-packages/tensorflow/lite/python/interpreter.py:457: UserWarning:     Warning: tf.lite.Interpreter is deprecated and is scheduled for deletion in\n"}
+,{"stream_name":"stderr","time":241.000048365,"data":"    TF 2.20. Please use the LiteRT interpreter from the ai_edge_litert package.\n"}
+,{"stream_name":"stderr","time":241.000054341,"data":"    See the [migration guide](https://ai.google.dev/edge/litert/migration)\n"}
+,{"stream_name":"stderr","time":241.000087098,"data":"    for details.\n"}
+,{"stream_name":"stderr","time":241.000092621,"data":"    \n"}
+,{"stream_name":"stderr","time":241.00009596,"data":"  warnings.warn(_INTERPRETER_DELETION_WARNING)\n"}
+,{"stream_name":"stderr","time":241.000099394,"data":"\n"}
+,{"stream_name":"stderr","time":241.000104255,"data":"/usr/local/lib/python3.13/dist-packages/tensorflow/lite/python/interpreter.py:457: UserWarning:     Warning: tf.lite.Interpreter is deprecated and is scheduled for deletion in\n"}
+,{"stream_name":"stderr","time":241.000112702,"data":"    TF 2.20. Please use the LiteRT interpreter from the ai_edge_litert package.\n"}
+,{"stream_name":"stderr","time":241.000115027,"data":"    See the [migration guide](https://ai.google.dev/edge/litert/migration)\n"}
+,{"stream_name":"stderr","time":241.000117236,"data":"    for details.\n"}
+,{"stream_name":"stderr","time":241.000119309,"data":"    \n"}
+,{"stream_name":"stderr","time":241.000121368,"data":"  warnings.warn(_INTERPRETER_DELETION_WARNING)\n"}
+,{"stream_name":"stdout","time":266.331202095,"data":"Float32 TFLite (updated app preprocessing): accuracy 0.7796 | macro AUC 0.9360 | agreement 0.9784\n"}
+,{"stream_name":"stdout","time":266.362086067,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":266.36210973,"data":"SUMMARY — full test set, n = 1484\n"}
+,{"stream_name":"stdout","time":266.362116078,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":266.362120535,"data":"                                            accuracy  macro_auc  agreement_with_keras\n"}
+,{"stream_name":"stdout","time":266.362125233,"data":"model                                                                                \n"}
+,{"stream_name":"stdout","time":266.362129826,"data":"Keras (training preprocessing)                0.7803     0.9364                   NaN\n"}
+,{"stream_name":"stdout","time":266.362134229,"data":"Keras (old app preprocessing)                 0.7621     0.9196                0.8578\n"}
+,{"stream_name":"stdout","time":266.36213832,"data":"Existing TFLite (old app preprocessing)       0.7446     0.9137                0.8497\n"}
+,{"stream_name":"stdout","time":266.362142689,"data":"Float32 TFLite (old app preprocessing)        0.7621     0.9196                0.8578\n"}
+,{"stream_name":"stdout","time":266.362146851,"data":"Float32 TFLite (updated app preprocessing)    0.7796     0.9360                0.9784\n"}
+,{"stream_name":"stdout","time":266.362151262,"data":"\n"}
+,{"stream_name":"stdout","time":266.36215557,"data":"Per-class recall:\n"}
+,{"stream_name":"stdout","time":266.362160407,"data":"                                            recall_mel  recall_nv  recall_bcc  recall_akiec  recall_bkl  recall_df  recall_vasc\n"}
+,{"stream_name":"stdout","time":266.36216513,"data":"model                                                                                                                          \n"}
+,{"stream_name":"stdout","time":266.362169915,"data":"Keras (training preprocessing)                   0.593      0.843       0.755         0.634       0.645      0.667        0.833\n"}
+,{"stream_name":"stdout","time":266.362174664,"data":"Keras (old app preprocessing)                    0.346      0.890       0.830         0.780       0.396      0.600        0.833\n"}
+,{"stream_name":"stdout","time":266.362179493,"data":"Existing TFLite (old app preprocessing)          0.352      0.873       0.849         0.756       0.379      0.367        0.833\n"}
+,{"stream_name":"stdout","time":266.362184273,"data":"Float32 TFLite (old app preprocessing)           0.346      0.890       0.830         0.780       0.396      0.600        0.833\n"}
+,{"stream_name":"stdout","time":266.362200262,"data":"Float32 TFLite (updated app preprocessing)       0.586      0.845       0.792         0.610       0.633      0.633        0.833\n"}
+,{"stream_name":"stdout","time":266.36220403,"data":"\n"}
+,{"stream_name":"stdout","time":266.362207197,"data":"Agreement between TFLite models and Keras on identical (old app) input:\n"}
+,{"stream_name":"stdout","time":266.362210741,"data":"  Existing TFLite vs Keras: 0.9447\n"}
+,{"stream_name":"stdout","time":266.362213875,"data":"  Float32 TFLite vs Keras:  1.0000\n"}
+,{"stream_name":"stdout","time":269.456314462,"data":"ISIC_0032476  true mel   pred bkl   conf 0.474 | mean |grad| softmax 6.31e-05, logit 2.55e-04 | heatmap correlation -0.093\n"}
+,{"stream_name":"stdout","time":270.367889965,"data":"ISIC_0030439  true nv    pred nv    conf 0.935 | mean |grad| softmax 2.98e-05, logit 3.89e-04 | heatmap correlation 0.974\n"}
+,{"stream_name":"stdout","time":271.239030986,"data":"ISIC_0025509  true bcc   pred bcc   conf 0.598 | mean |grad| softmax 1.25e-04, logit 3.62e-04 | heatmap correlation 0.313\n"}
+,{"stream_name":"stdout","time":272.135415427,"data":"ISIC_0026626  true akiec pred bkl   conf 0.597 | mean |grad| softmax 6.42e-05, logit 2.65e-04 | heatmap correlation -0.509\n"}
+,{"stream_name":"stdout","time":273.011474602,"data":"ISIC_0026378  true bkl   pred bkl   conf 0.772 | mean |grad| softmax 4.37e-05, logit 2.51e-04 | heatmap correlation -0.050\n"}
+,{"stream_name":"stdout","time":273.888201829,"data":"ISIC_0027107  true df    pred bkl   conf 0.530 | mean |grad| softmax 6.88e-05, logit 2.76e-04 | heatmap correlation 0.910\n"}
+,{"stream_name":"stderr","time":287.475114892,"data":"2026-10-08 21:20:49.742829: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":287.611311165,"data":"2026-10-08 21:20:49.879153: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":287.677453096,"data":"2026-10-08 21:20:49.742829: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":287.677481021,"data":"2026-10-08 21:20:49.879153: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":287.677485923,"data":"\n"}
+,{"stream_name":"stderr","time":287.677489517,"data":"2026-10-08 21:20:49.742829: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":287.677493185,"data":"2026-10-08 21:20:49.879153: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":287.927790139,"data":"2026-10-08 21:20:50.195485: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":288.070701574,"data":"2026-10-08 21:20:50.338462: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":288.129913817,"data":"2026-10-08 21:20:50.195485: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":288.129943808,"data":"2026-10-08 21:20:50.338462: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":288.12994944,"data":"\n"}
+,{"stream_name":"stderr","time":288.129952908,"data":"2026-10-08 21:20:50.195485: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":288.129956882,"data":"2026-10-08 21:20:50.338462: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":288.824715028,"data":"2026-10-08 21:20:51.092420: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":288.965439107,"data":"2026-10-08 21:20:51.233263: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":289.026891611,"data":"2026-10-08 21:20:51.092420: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":289.026914828,"data":"2026-10-08 21:20:51.233263: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":289.026919916,"data":"\n"}
+,{"stream_name":"stderr","time":289.026923311,"data":"2026-10-08 21:20:51.092420: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stderr","time":289.026927352,"data":"2026-10-08 21:20:51.233263: E external/local_xla/xla/stream_executor/cuda/cuda_timer.cc:86] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.\n"}
+,{"stream_name":"stdout","time":293.705117021,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":293.705151177,"data":"OCCLUSION TEST — n = 200, 25% of image masked\n"}
+,{"stream_name":"stdout","time":293.705156435,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":293.705159877,"data":"                              center masked  corners masked\n"}
+,{"stream_name":"stdout","time":293.705163272,"data":"Mean confidence drop                  0.440           0.088\n"}
+,{"stream_name":"stdout","time":293.705178121,"data":"Median confidence drop                0.475           0.053\n"}
+,{"stream_name":"stdout","time":293.705181575,"data":"Prediction changed                    60.5%           16.0%\n"}
+,{"stream_name":"stdout","time":293.705184932,"data":"\n"}
+,{"stream_name":"stdout","time":293.705188015,"data":"Center mask hurt more than corner mask in 83.5% of images\n"}
+,{"stream_name":"stdout","time":293.705193103,"data":"Wilcoxon signed-rank p-value (center drop vs corner drop): 9.25e-24\n"}
+,{"stream_name":"stdout","time":294.629899735,"data":"Files saved:\n"}
+,{"stream_name":"stdout","time":294.629927766,"data":"  /kaggle/working/__notebook__.ipynb\n"}
+,{"stream_name":"stdout","time":294.629932664,"data":"  /kaggle/working/gradcam_softmax_vs_logit.png\n"}
+,{"stream_name":"stdout","time":294.629936205,"data":"  /kaggle/working/occlusion_results.csv\n"}
+,{"stream_name":"stdout","time":294.629939878,"data":"  /kaggle/working/occlusion_test.png\n"}
+,{"stream_name":"stdout","time":294.62994316,"data":"  /kaggle/working/skin_cancer_model_f32.tflite\n"}
+,{"stream_name":"stdout","time":294.629946565,"data":"  /kaggle/working/test_split.csv\n"}
+,{"stream_name":"stdout","time":294.62995008,"data":"  /kaggle/working/verification_metrics.csv\n"}
+,{"stream_name":"stderr","time":300.216602034,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":300.216635067,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":300.386594715,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":300.38662171,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":301.164521536,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":301.330955209,"data":"[NbConvertApp] Writing 4383522 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":303.724708616,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":304.385757984,"data":"[NbConvertApp] Support files will be in __results___files/\n"}
+,{"stream_name":"stderr","time":304.385789022,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":304.387198759,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":304.387488256,"data":"[NbConvertApp] Writing 435288 bytes to __results__.html\n"}
+]
