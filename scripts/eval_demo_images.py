@@ -26,7 +26,7 @@ APP_PATH   = os.path.join(REPO_ROOT, "dermascope", "skin_cancer_app.py")
 DEMO_DIR   = os.path.join(REPO_ROOT, "demo_images")
 LABELS_CSV = os.path.join(DEMO_DIR, "labels.csv")
 
-APP_FUNCTIONS = ("load_model_and_labels", "preprocess_image", "run_inference")
+APP_FUNCTIONS = ("find_model_path", "load_model_and_labels", "preprocess_image", "run_inference")
 APP_CONSTANTS = ("IMG_SIZE",)
 
 

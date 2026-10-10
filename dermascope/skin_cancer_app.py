@@ -348,6 +348,17 @@ html, body, [data-testid="stAppViewContainer"] {
 
 IMG_SIZE = 224
 
+# Occlusion sensitivity: a 56px patch at stride 28 gives a 7×7 grid (49 positions)
+OCC_PATCH  = 56
+OCC_STRIDE = 28
+# Fixed color scale: a confidence drop this large is full brightness
+# (1.00 = the patch removed all of the model's confidence)
+OCC_FULL_SCALE = 1.00
+# Overlay opacity ramps from 0 at no drop up to its maximum at this drop
+OCC_OPACITY_FULL = 0.10
+# Below this, the largest confidence drop is treated as "no region stands out"
+OCC_MIN_DROP = 0.05
+
 # Class info: short_name → (full_name, risk_level, description)
 CLASS_INFO = {
     "mel": (
@@ -405,11 +416,9 @@ RISK_COLORS = {
 # MODEL LOADING
 # ================================================================
 
-@st.cache_resource(show_spinner=False)
-def load_model_and_labels():
-    """Load TFLite model and class labels. Cached so it only loads once."""
-    model_path  = os.path.join(os.path.dirname(__file__), "skin_cancer_model_f32.tflite")
-    labels_path = os.path.join(os.path.dirname(__file__), "class_labels.json")
+def find_model_path():
+    """Path to the TFLite model, or None if it can't be found."""
+    model_path = os.path.join(os.path.dirname(__file__), "skin_cancer_model_f32.tflite")
 
     # Fallback: try current directory
     if not os.path.exists(model_path):
@@ -419,7 +428,16 @@ def load_model_and_labels():
                     model_path = os.path.join(root, f)
                     break
 
-    if not os.path.exists(model_path):
+    return model_path if os.path.exists(model_path) else None
+
+
+@st.cache_resource(show_spinner=False)
+def load_model_and_labels():
+    """Load TFLite model and class labels. Cached so it only loads once."""
+    model_path  = find_model_path()
+    labels_path = os.path.join(os.path.dirname(__file__), "class_labels.json")
+
+    if model_path is None:
         return None, None
 
     from ai_edge_litert.interpreter import Interpreter
@@ -474,34 +492,83 @@ def build_probability_bars(probs: np.ndarray, labels: dict) -> str:
     return html
 
 
-def make_texture_overlay(img_array: np.ndarray, alpha: float = 0.45) -> Image.Image:
+@st.cache_data(show_spinner=False, max_entries=32)
+def compute_occlusion_map(input_data: np.ndarray, class_idx: int) -> np.ndarray:
     """
-    Compute a local pixel-variance texture map from the input image.
-    This is derived purely from image pixels (high-pass variance against
-    a Gaussian-blurred version) and does not use the model in any way,
-    so it does not represent model attention or activations.
+    Occlusion sensitivity for one preprocessed image, using the app's model.
+    A mean-color patch is slid over the model input; each cell of the returned
+    7×7 map is how much the probability of class_idx dropped with the patch
+    at that position. Cached per image (keyed on input_data and class_idx).
     """
-    # img_array shape: (1, 224, 224, 3)
-    img = img_array[0]  # (224, 224, 3)
+    # input_data shape: (1, 224, 224, 3), already preprocessed
+    mean_color = input_data[0].mean(axis=(0, 1))
+    positions  = range(0, IMG_SIZE - OCC_PATCH + 1, OCC_STRIDE)
+    n = len(positions)
 
-    # Compute local variance across channels as saliency proxy
-    gray = np.mean(img, axis=2)
-    kernel_size = 15
-    blurred = cv2.GaussianBlur(gray, (kernel_size, kernel_size), 0)
-    saliency = np.abs(gray - blurred)
+    # One batch: every occluded copy, plus the untouched image as the baseline
+    batch = np.repeat(input_data, n * n + 1, axis=0)
+    for row, y in enumerate(positions):
+        for col, x in enumerate(positions):
+            batch[row * n + col, y:y + OCC_PATCH, x:x + OCC_PATCH] = mean_color
 
-    # Smooth and normalize
-    saliency = cv2.GaussianBlur(saliency, (21, 21), 0)
-    saliency = (saliency - saliency.min()) / (saliency.max() - saliency.min() + 1e-8)
+    # A fresh interpreter sized for the batch, used only by this call. The
+    # shared cached interpreter is never resized, so simultaneous users
+    # can't collide.
+    from ai_edge_litert.interpreter import Interpreter
+    interpreter = Interpreter(model_path=find_model_path())
+    input_index = interpreter.get_input_details()[0]['index']
+    interpreter.resize_tensor_input(input_index, list(batch.shape))
+    interpreter.allocate_tensors()
+    interpreter.set_tensor(input_index, batch)
+    interpreter.invoke()
+    output = interpreter.get_tensor(interpreter.get_output_details()[0]['index'])
+
+    probs = output[:, class_idx]
+    return (probs[-1] - probs[:-1]).reshape(n, n)
+
+
+def make_occlusion_overlay(img: Image.Image, drop_map: np.ndarray,
+                           alpha: float = 0.55) -> Image.Image:
+    """
+    Upsample the occlusion map to the image size and blend it over the image.
+    alpha is the maximum opacity; zero-drop areas are left untouched.
+    """
+    # Only drops count; a patch that raised the confidence shows as zero.
+    # Fixed scale, the same for every image: a drop of OCC_FULL_SCALE is full
+    # brightness, so brightness is comparable from one image to the next.
+    heat = np.clip(drop_map / OCC_FULL_SCALE, 0, 1)
+
+    # Each cell belongs to the center of its patch, so upsample onto the area
+    # the patch centers span and replicate the edge out to the full input size.
+    n    = heat.shape[0]
+    pad  = (IMG_SIZE - n * OCC_STRIDE) // 2
+    heat = cv2.resize(heat.astype(np.float32), (n * OCC_STRIDE, n * OCC_STRIDE),
+                      interpolation=cv2.INTER_LINEAR)
+    heat = cv2.copyMakeBorder(heat, pad, pad, pad, pad, cv2.BORDER_REPLICATE)
+
+    original = np.array(img.convert("RGB"), dtype=np.uint8)
+    h, w     = original.shape[:2]
+    heat     = cv2.resize(heat, (w, h), interpolation=cv2.INTER_LINEAR)
 
     # Apply colormap
-    heatmap = cv2.applyColorMap(np.uint8(255 * saliency), cv2.COLORMAP_INFERNO)
+    heatmap = cv2.applyColorMap(np.uint8(255 * np.clip(heat, 0, 1)), cv2.COLORMAP_INFERNO)
     heatmap = cv2.cvtColor(heatmap, cv2.COLOR_BGR2RGB)
 
-    # Overlay
-    original_uint8 = np.uint8(img * 255)
-    overlay = (original_uint8 * (1 - alpha) + heatmap * alpha).astype(np.uint8)
+    # Overlay: opacity ramps up to alpha at a drop of OCC_OPACITY_FULL and
+    # stays there, so zero-drop areas show the original image unchanged and
+    # any meaningful hotspot is clearly visible. Color carries the drop size.
+    opacity = alpha * np.clip(heat * OCC_FULL_SCALE / OCC_OPACITY_FULL, 0, 1)
+    opacity = opacity[..., np.newaxis]
+    overlay = (original * (1 - opacity) + heatmap * opacity).astype(np.uint8)
     return Image.fromarray(overlay)
+
+
+def occlusion_summary(drop_map: np.ndarray) -> str:
+    """One line under the map: the largest drop, or that no region stands out."""
+    max_drop = float(drop_map.max())
+    if max_drop < OCC_MIN_DROP:
+        return "No single region strongly changed the prediction"
+    return f"Largest confidence drop: {max_drop:.0%}"
 
 
 def pil_to_b64(img: Image.Image, format: str = "PNG") -> str:
@@ -702,12 +769,12 @@ with col_result:
 
 
 # ================================================================
-# SECTION 3 — Texture Map
+# SECTION 3 — Occlusion Sensitivity
 # ================================================================
 
 if uploaded:
     st.markdown("<br>", unsafe_allow_html=True)
-    st.markdown('<div class="section-label">03 — Texture Map</div>',
+    st.markdown('<div class="section-label">03 — Occlusion Sensitivity</div>',
                 unsafe_allow_html=True)
 
     cam_col1, cam_col2, cam_col3 = st.columns(3)
@@ -716,8 +783,29 @@ if uploaded:
         st.image(img_pil, caption="Original", use_container_width=True)
 
     with cam_col2:
-        overlay = make_texture_overlay(input_data / 255.0, alpha=0.55)
-        st.image(overlay, caption="Local Texture Variance", use_container_width=True)
+        with st.spinner("Computing occlusion sensitivity..."):
+            drop_map = compute_occlusion_map(input_data, top_idx)
+        overlay = make_occlusion_overlay(img_pil, drop_map, alpha=0.55)
+        st.image(overlay, caption="Occlusion Sensitivity", use_container_width=True)
+        st.markdown(f"""
+        <p style='font-family:"DM Mono",monospace; font-size:0.75rem;
+           color:#9a9089; text-align:center;'>{occlusion_summary(drop_map)}</p>
+        <div style='height:6px; border-radius:2px; margin-top:0.6rem;
+             background:linear-gradient(90deg, #000004, #420a68, #932667,
+             #dd513a, #fca50a, #fcffa4);'></div>
+        <div style='display:flex; justify-content:space-between;
+             font-family:"DM Mono",monospace; font-size:0.68rem; color:#6b6560;
+             margin-top:0.25rem;'>
+            <span>0%</span><span>{OCC_FULL_SCALE:.0%}</span>
+        </div>
+        <p style='font-size:0.72rem; color:#6b6560; margin-top:0.3rem; line-height:1.6;'>
+        Brightness shows how many percentage points the model’s confidence fell
+        when that region was covered. Full brightness is a
+        {OCC_FULL_SCALE * 100:.0f}-point drop. A prediction can’t fall further
+        than its own confidence, so less confident predictions never reach full
+        brightness. The scale is the same for every image.
+        </p>
+        """, unsafe_allow_html=True)
 
     with cam_col3:
         # High-pass saliency (edges + lesion boundaries)
@@ -731,10 +819,9 @@ if uploaded:
 
     st.markdown("""
     <p style='font-size:0.78rem; color:#4a4540; margin-top:0.75rem; line-height:1.7;'>
-    <strong style='color:#6b6560;'>Local Texture Variance</strong> — Brighter regions
-    show high local pixel variance in the image, computed directly from
-    pixel values rather than the model. This does not represent model
-    attention or activations.
+    Occlusion sensitivity: brighter regions are where covering the image most
+    reduced the model’s confidence in its prediction. Coarse 7×7 grid; it shows
+    what the prediction depends on, not a medical rationale.
     </p>
     """, unsafe_allow_html=True)
 
