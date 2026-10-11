@@ -27,7 +27,7 @@ DEMO_DIR   = os.path.join(REPO_ROOT, "demo_images")
 LABELS_CSV = os.path.join(DEMO_DIR, "labels.csv")
 
 APP_FUNCTIONS = ("find_model_path", "load_model_and_labels", "preprocess_image", "run_inference")
-APP_CONSTANTS = ("IMG_SIZE",)
+APP_CONSTANTS = ("IMG_SIZE", "NUM_CLASSES", "FEATURE_DIM")
 
 
 def load_app_functions() -> dict:
@@ -73,7 +73,7 @@ def main():
         # Same steps as the app: open → RGB → preprocess → infer → argmax
         img_pil    = Image.open(os.path.join(DEMO_DIR, row["filename"])).convert("RGB")
         input_data = app["preprocess_image"](img_pil)
-        probs      = app["run_inference"](interpreter, input_data)
+        probs, _   = app["run_inference"](interpreter, input_data)
 
         top_idx    = int(np.argmax(probs))
         predicted  = labels[str(top_idx)]

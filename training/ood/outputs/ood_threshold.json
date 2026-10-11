@@ -1,0 +1,50 @@
+{
+  "quick_test": false,
+  "threshold": 0.32709768414497375,
+  "rule": "reject when score > threshold",
+  "score": "cosine distance to the k-th nearest neighbor in the bank, k = 5",
+  "k": 5,
+  "percentile": 95,
+  "n_validation": 1528,
+  "bank_file": "ood_bank.npy",
+  "bank_size": 3000,
+  "bank_dtype": "float16",
+  "feature_dim": 1280,
+  "features": "GlobalAveragePooling2D output, L2-normalized",
+  "model_file": "skin_cancer_model_f32_features.tflite",
+  "model_sha256": "c1003d72249258035071441f75e06c97c9f2965078644985cbead71ed297b434",
+  "bank_sha256": "af1a227e9ac3d29158889ad2b8a52925379c2a748f48fa863846ad7218cc2b21",
+  "k_selection": "lowest worst-case test rejection rate across lesion classes, among k that reject at least 90% of general photos",
+  "k_candidates": [
+    {
+      "k": 5,
+      "threshold": 0.3270976841,
+      "test_rejection": 0.0424528302,
+      "worst_class": "vasc",
+      "worst_class_rejection": 0.2666666667,
+      "general_photos_rejection": 1.0,
+      "dermnet_rejection": 0.98,
+      "eligible": true
+    },
+    {
+      "k": 10,
+      "threshold": 0.345604986,
+      "test_rejection": 0.0471698113,
+      "worst_class": "vasc",
+      "worst_class_rejection": 0.3666666667,
+      "general_photos_rejection": 1.0,
+      "dermnet_rejection": 0.975,
+      "eligible": true
+    },
+    {
+      "k": 50,
+      "threshold": 0.4076884389,
+      "test_rejection": 0.0491913747,
+      "worst_class": "vasc",
+      "worst_class_rejection": 0.4666666667,
+      "general_photos_rejection": 1.0,
+      "dermnet_rejection": 0.97,
+      "eligible": true
+    }
+  ]
+}

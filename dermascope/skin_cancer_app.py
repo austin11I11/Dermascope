@@ -3,11 +3,13 @@
 #  Built with Streamlit + TensorFlow Lite
 #  
 #  HOW TO RUN:
-#    pip install streamlit tensorflow opencv-python pillow numpy
+#    pip install -r requirements.txt
 #    streamlit run skin_cancer_app.py
 #
 #  FILES NEEDED IN SAME FOLDER:
-#    skin_cancer_model_f32.tflite   (unquantized float32 export, from training/verify_model)
+#    skin_cancer_model_f32_features.tflite   (float32 export with two outputs: class
+#                                             probabilities and pooled features, from training/ood)
+#    ood_bank.npy, ood_threshold.json        (out-of-distribution gate, from training/ood)
 #    class_labels.json          (from Cell 20 of the model notebook)
 # ================================================================
 
@@ -348,6 +350,10 @@ html, body, [data-testid="stAppViewContainer"] {
 
 IMG_SIZE = 224
 
+# The model has two outputs, told apart by their size
+NUM_CLASSES = 7      # class probabilities
+FEATURE_DIM = 1280   # pooled features, used by the out-of-distribution gate
+
 # Occlusion sensitivity: a 56px patch at stride 28 gives a 7×7 grid (49 positions)
 OCC_PATCH  = 56
 OCC_STRIDE = 28
@@ -418,7 +424,7 @@ RISK_COLORS = {
 
 def find_model_path():
     """Path to the TFLite model, or None if it can't be found."""
-    model_path = os.path.join(os.path.dirname(__file__), "skin_cancer_model_f32.tflite")
+    model_path = os.path.join(os.path.dirname(__file__), "skin_cancer_model_f32_features.tflite")
 
     # Fallback: try current directory
     if not os.path.exists(model_path):
@@ -450,6 +456,24 @@ def load_model_and_labels():
     return interpreter, labels
 
 
+@st.cache_resource(show_spinner=False)
+def load_ood_gate():
+    """
+    Load the out-of-distribution gate: the bank of training-image features
+    and the score threshold. Cached so it only loads once.
+    Returns (bank, threshold, k), or None if a file is missing.
+    """
+    bank_path      = os.path.join(os.path.dirname(__file__), "ood_bank.npy")
+    threshold_path = os.path.join(os.path.dirname(__file__), "ood_threshold.json")
+    if not (os.path.exists(bank_path) and os.path.exists(threshold_path)):
+        return None
+
+    bank = np.load(bank_path).astype(np.float32)  # saved as float16, (3000, 1280)
+    with open(threshold_path) as f:
+        info = json.load(f)
+    return bank, float(info["threshold"]), int(info["k"])
+
+
 def preprocess_image(img: Image.Image) -> np.ndarray:
     """PIL Image → float32 array in [0, 255], resized the way the training pipeline does."""
     arr = np.array(img.convert("RGB"), dtype=np.uint8)
@@ -458,15 +482,33 @@ def preprocess_image(img: Image.Image) -> np.ndarray:
     return np.expand_dims(arr, axis=0)  # (1, 224, 224, 3)
 
 
-def run_inference(interpreter, input_data: np.ndarray) -> np.ndarray:
-    """Run TFLite inference. Returns probability array of shape (7,)."""
-    input_details  = interpreter.get_input_details()
-    output_details = interpreter.get_output_details()
+def run_inference(interpreter, input_data: np.ndarray):
+    """
+    Run TFLite inference. Returns (probabilities of shape (7,),
+    pooled features of shape (1280,)).
+    """
+    input_details = interpreter.get_input_details()
+    # The converter does not promise an output order, so go by size
+    outputs = {int(d['shape'][-1]): d['index'] for d in interpreter.get_output_details()}
 
     interpreter.set_tensor(input_details[0]['index'], input_data)
     interpreter.invoke()
-    output = interpreter.get_tensor(output_details[0]['index'])
-    return output[0]  # Shape: (7,)
+    probs    = interpreter.get_tensor(outputs[NUM_CLASSES])[0]
+    features = interpreter.get_tensor(outputs[FEATURE_DIM])[0]
+    return probs, features
+
+
+def ood_score(features: np.ndarray, bank: np.ndarray, k: int) -> float:
+    """
+    Out-of-distribution score: cosine distance from this image's pooled
+    features to its k-th nearest neighbor in the bank of training images.
+    Higher means less like the dermatoscopic images the model was trained on.
+    Same computation as training/ood/ood_gate.ipynb.
+    """
+    query = features / np.linalg.norm(features)
+    similarities = bank @ query
+    kth_largest = np.partition(similarities, -k)[-k]
+    return float(1.0 - kth_largest)
 
 
 def build_probability_bars(probs: np.ndarray, labels: dict) -> str:
@@ -521,7 +563,8 @@ def compute_occlusion_map(input_data: np.ndarray, class_idx: int) -> np.ndarray:
     interpreter.allocate_tensors()
     interpreter.set_tensor(input_index, batch)
     interpreter.invoke()
-    output = interpreter.get_tensor(interpreter.get_output_details()[0]['index'])
+    outputs = {int(d['shape'][-1]): d['index'] for d in interpreter.get_output_details()}
+    output = interpreter.get_tensor(outputs[NUM_CLASSES])
 
     probs = output[:, class_idx]
     return (probs[-1] - probs[:-1]).reshape(n, n)
@@ -611,6 +654,7 @@ with st.sidebar:
     - About 41% of test melanomas were missed.
     - HAM10000 contains mostly lighter skin tones, so performance on
       darker skin is unverified.
+    - The image check wrongly rejects about 27% of vascular lesions.
     """)
     st.markdown("---")
 
@@ -650,17 +694,25 @@ st.markdown("""
 # ── Load Model ──
 with st.spinner("Initializing model..."):
     interpreter, labels = load_model_and_labels()
+    ood_gate = load_ood_gate()
 
-if interpreter is None:
+if interpreter is None or ood_gate is None:
     st.error("""
-    **Model file not found.**
+    **Model files not found.**
 
-    Make sure `skin_cancer_model_f32.tflite` and `class_labels.json`
-    are in the same folder as this app.
+    Make sure `skin_cancer_model_f32_features.tflite`, `ood_bank.npy`,
+    `ood_threshold.json` and `class_labels.json` are in the same folder
+    as this app.
 
-    Run **Cell 20** of the model notebook first to generate these files.
+    `training/ood/ood_gate.ipynb` generates the first three; **Cell 20** of
+    the model notebook generates the labels.
     """)
     st.stop()
+
+ood_bank, ood_threshold, ood_k = ood_gate
+
+# True when the out-of-distribution gate rejects the uploaded image
+rejected = False
 
 # ── Layout: Upload col + Result col ──
 col_upload, col_gap, col_result = st.columns([5, 0.4, 5])
@@ -674,6 +726,7 @@ with col_upload:
         type=["jpg", "jpeg", "png"],
         help="Use a close-up, well-lit photo of the skin lesion."
     )
+    st.caption("Designed for dermatoscopic images (taken through a dermatoscope) only.")
 
     if uploaded:
         img_pil = Image.open(uploaded).convert("RGB")
@@ -709,12 +762,28 @@ with col_result:
                 progress.progress(pct)
 
             input_data = preprocess_image(img_pil)
-            probs      = run_inference(interpreter, input_data)
+            probs, features = run_inference(interpreter, input_data)
+
+            # Out-of-distribution gate, checked before anything is shown
+            rejected = ood_score(features, ood_bank, ood_k) > ood_threshold
 
             progress.progress(100)
             time.sleep(0.1)
             progress.empty()
 
+    if uploaded and rejected:
+        st.markdown("""
+        <div class="result-card">
+            <div class="result-label">Image Not Classified</div>
+            <div class="result-sub" style="font-size:0.95rem; color:#b0a99a; line-height:1.7;">
+                This doesn’t look like a dermatoscopic skin-lesion image, so
+                DermaScope won’t classify it. The model was trained only on
+                dermatoscope images. Regular phone photos of skin aren’t supported.
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    elif uploaded:
         top_idx        = int(np.argmax(probs))
         top_short      = labels[str(top_idx)]
         top_full, risk, description = CLASS_INFO[top_short]
@@ -772,7 +841,7 @@ with col_result:
 # SECTION 3 — Occlusion Sensitivity
 # ================================================================
 
-if uploaded:
+if uploaded and not rejected:
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown('<div class="section-label">03 — Occlusion Sensitivity</div>',
                 unsafe_allow_html=True)
@@ -889,7 +958,7 @@ if uploaded:
 # SECTION 5 — Export Results
 # ================================================================
 
-if uploaded:
+if uploaded and not rejected:
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown('<div class="section-label">05 — Export</div>',
                 unsafe_allow_html=True)

@@ -4,3 +4,4 @@ __pycache__/
 .DS_Store
 demo_images/
 training/verify_model/outputs/skin_cancer_model_f32.tflite
+training/ood/outputs/skin_cancer_model_f32_features.tflite
