@@ -390,10 +390,12 @@ SAMPLES = [
     ("ISIC_0025314.jpg", "Dermatofibroma"),
     ("ISIC_0027856.jpg", "Vascular Lesion"),
     ("ISIC_0027132.jpg", "Melanocytic Nevi"),
-    ("ISIC_0031424.jpg", "Benign Keratosis"),
+    ("ISIC_0032976.jpg", "Melanoma"),
     ("ISIC_0027337.jpg", "Basal Cell Carcinoma"),
     ("coffee_mug.jpg",   "Not a skin lesion"),
 ]
+# The one sample the model misclassifies, kept as an honest miss
+SAMPLE_MISS = "ISIC_0027337.jpg"
 
 # Class info: short_name → (full_name, risk_level, description)
 CLASS_INFO = {
@@ -778,6 +780,8 @@ with col_upload:
                 st.button(diagnosis, key=f"sample_{filename}",
                           on_click=select_sample, args=(filename,),
                           use_container_width=True)
+                if filename == SAMPLE_MISS:
+                    st.caption("The model gets this one wrong.")
     st.caption(
         "Sample images from the HAM10000 test set (Tschandl et al., 2018, "
         "CC BY-NC 4.0), never seen during training. More dermoscopic images "

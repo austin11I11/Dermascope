@@ -7,8 +7,8 @@ Used by the "Try a sample image" row in the app.
 | `ISIC_0025314.jpg` | Dermatofibroma | HAM10000 |
 | `ISIC_0027856.jpg` | Vascular lesion | HAM10000 |
 | `ISIC_0027132.jpg` | Melanocytic nevus | HAM10000 |
-| `ISIC_0031424.jpg` | Benign keratosis | HAM10000 |
-| `ISIC_0027337.jpg` | Basal cell carcinoma | HAM10000 |
+| `ISIC_0032976.jpg` | Melanoma | HAM10000 |
+| `ISIC_0027337.jpg` | Basal cell carcinoma (the model gets this one wrong) | HAM10000 |
 | `coffee_mug.jpg` | Not a skin lesion | Wikimedia Commons |
 
 The five HAM10000 images are in the model's test split, so they were not used
