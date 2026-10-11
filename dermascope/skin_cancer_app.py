@@ -655,6 +655,7 @@ with st.sidebar:
     - HAM10000 contains mostly lighter skin tones, so performance on
       darker skin is unverified.
     - The image check wrongly rejects about 27% of vascular lesions.
+    - The image check also wrongly rejects about 4% of melanomas.
     """)
     st.markdown("---")
 
@@ -779,6 +780,7 @@ with col_result:
                 This doesn’t look like a dermatoscopic skin-lesion image, so
                 DermaScope won’t classify it. The model was trained only on
                 dermatoscope images. Regular phone photos of skin aren’t supported.
+                If you’re concerned about a skin spot, see a dermatologist.
             </div>
         </div>
         """, unsafe_allow_html=True)
