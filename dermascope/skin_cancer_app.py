@@ -11,6 +11,7 @@
 #                                             probabilities and pooled features, from training/ood)
 #    ood_bank.npy, ood_threshold.json        (out-of-distribution gate, from training/ood)
 #    class_labels.json          (from Cell 20 of the model notebook)
+#    samples/                   (the six "Try a sample image" pictures)
 # ================================================================
 
 import streamlit as st
@@ -301,6 +302,23 @@ html, body, [data-testid="stAppViewContainer"] {
     border-color: rgba(200,169,110,0.5) !important;
 }
 
+/* ── Sample image picker ── */
+.sample-heading {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8b7355;
+    margin-bottom: 0.6rem;
+}
+[class*="st-key-sample_"] button {
+    letter-spacing: 0.02em !important;
+    padding: 0.35rem 0.2rem !important;
+}
+[class*="st-key-sample_"] button p {
+    font-size: 0.66rem !important;
+}
+
 /* ── Progress bar ── */
 .stProgress > div > div > div {
     background: linear-gradient(90deg, #8b7355, #c8a96e) !important;
@@ -365,6 +383,18 @@ OCC_OPACITY_FULL = 0.10
 # Below this, the largest confidence drop is treated as "no region stands out"
 OCC_MIN_DROP = 0.05
 
+# "Try a sample image": (filename in samples/, true diagnosis). Five HAM10000
+# test-set images and one non-skin photo that the image check rejects.
+SAMPLES_DIR = os.path.join(os.path.dirname(__file__), "samples")
+SAMPLES = [
+    ("ISIC_0025314.jpg", "Dermatofibroma"),
+    ("ISIC_0027856.jpg", "Vascular Lesion"),
+    ("ISIC_0027132.jpg", "Melanocytic Nevi"),
+    ("ISIC_0031424.jpg", "Benign Keratosis"),
+    ("ISIC_0027337.jpg", "Basal Cell Carcinoma"),
+    ("coffee_mug.jpg",   "Not a skin lesion"),
+]
+
 # Class info: short_name → (full_name, risk_level, description)
 CLASS_INFO = {
     "mel": (
@@ -416,6 +446,22 @@ RISK_COLORS = {
     "MEDIUM": ("#c8a96e", "risk-medium"),
     "LOW":    ("#5ec49a", "risk-low"),
 }
+
+
+# ================================================================
+# SAMPLE IMAGES
+# ================================================================
+
+def select_sample(filename: str):
+    """Button callback: analyze a bundled sample instead of an upload."""
+    st.session_state["sample"] = filename
+    # A new key gives the uploader a fresh, empty widget
+    st.session_state["uploader_key"] = st.session_state.get("uploader_key", 0) + 1
+
+
+def clear_sample():
+    """Uploader callback: an uploaded file replaces any selected sample."""
+    st.session_state["sample"] = None
 
 
 # ================================================================
@@ -722,16 +768,39 @@ with col_upload:
     st.markdown('<div class="section-label">01 — Image Input</div>',
                 unsafe_allow_html=True)
 
-    uploaded = st.file_uploader(
+    st.markdown('<div class="sample-heading">Try a sample image</div>',
+                unsafe_allow_html=True)
+    for row_start in range(0, len(SAMPLES), 3):
+        for col, (filename, diagnosis) in zip(st.columns(3),
+                                              SAMPLES[row_start:row_start + 3]):
+            with col:
+                st.image(os.path.join(SAMPLES_DIR, filename), use_container_width=True)
+                st.button(diagnosis, key=f"sample_{filename}",
+                          on_click=select_sample, args=(filename,),
+                          use_container_width=True)
+    st.caption(
+        "Sample images from the HAM10000 test set (Tschandl et al., 2018, "
+        "CC BY-NC 4.0), never seen during training. More dermoscopic images "
+        "are available from the ISIC Archive."
+    )
+
+    uploaded_file = st.file_uploader(
         "Upload a dermatoscopic image",
         type=["jpg", "jpeg", "png"],
-        help="Use a close-up, well-lit photo of the skin lesion."
+        help="Use a close-up, well-lit photo of the skin lesion.",
+        key=f"uploader_{st.session_state.get('uploader_key', 0)}",
+        on_change=clear_sample,
     )
     st.caption("Designed for dermatoscopic images (taken through a dermatoscope) only.")
 
+    # A selected sample goes through the same pipeline as an upload from here on
+    sample = st.session_state.get("sample")
+    uploaded = uploaded_file or (os.path.join(SAMPLES_DIR, sample) if sample else None)
+
     if uploaded:
         img_pil = Image.open(uploaded).convert("RGB")
-        st.image(img_pil, caption="Uploaded Image", use_container_width=True)
+        st.image(img_pil, caption="Uploaded Image" if uploaded_file else "Sample Image",
+                 use_container_width=True)
 
         # Image metadata
         w, h = img_pil.size
